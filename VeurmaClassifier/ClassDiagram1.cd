@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VeurmaClassifier.C45Algorithm">
+    <Position X="7.5" Y="0.75" Width="2.25" />
+    <Members>
+      <Property Name="Attributes" Hidden="true" />
+      <Method Name="computeGainRatio" Hidden="true" />
+      <Method Name="Converter" Hidden="true" />
+      <Method Name="induceTree" Hidden="true" />
+      <Method Name="InformationGainNominal" Hidden="true" />
+      <Method Name="InformationGainNumetric" Hidden="true" />
+      <Method Name="init" Hidden="true" />
+      <Property Name="MaximumHeight" Hidden="true" />
+      <Property Name="MaxVariables" Hidden="true" />
+      <Property Name="Model" Hidden="true" />
+      <Method Name="Range" Hidden="true" />
+      <Method Name="split" Hidden="true" />
+      <Property Name="SplitStep" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="tree" Type="VeurmaClassifier.DecisionTree" ManuallyRouted="true">
+      <Path>
+        <Point X="8.156" Y="4.42" />
+        <Point X="8.156" Y="4.737" />
+        <Point X="7.9" Y="4.737" />
+        <Point X="7.9" Y="9.25" />
+        <Point X="7.25" Y="9.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>BAAAQIAFQAABCEABgAAoAAIQAJAgEAIIBAgCgAAAABA=</HashCode>
+      <FileName>C45Algorithm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="tree" />
+      <Field Name="inputRanges" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="VeurmaClassifier.ContingencyTable">
+    <Position X="2.25" Y="3" Width="1.75" />
+    <Members>
+      <Field Name="falseNegatives" Hidden="true" />
+      <Field Name="falsePositives" Hidden="true" />
+      <Property Name="Samples" Hidden="true" />
+      <Field Name="trueNegatives" Hidden="true" />
+      <Field Name="truePositives" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAAAAAAAAAEAIAAAAAAAAAAEgAAgLAAAIEgA=</HashCode>
+      <FileName>ContingencyTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeurmaClassifier.SplitProperties">
+    <Position X="4.75" Y="5" Width="1.75" />
+    <Members>
+      <Property Name="Attribute" Hidden="true" />
+      <Property Name="AttributeIndex" Hidden="true" />
+      <Property Name="Owner" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAiAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SplitProperties.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="owner" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="VeurmaClassifier.DecisionRule">
+    <Position X="10" Y="0.75" Width="2.25" />
+    <Members>
+      <Method Name="CompareTo" Hidden="true" />
+      <Property Name="Count" Hidden="true" />
+      <Method Name="Equals" Hidden="true" />
+      <Property Name="Expressions" Hidden="true" />
+      <Method Name="GetEnumerator" Hidden="true" />
+      <Method Name="GetHashCode" Hidden="true" />
+      <Method Name="IEnumerable.GetEnumerator" Hidden="true" />
+      <Method Name="IsInconsistentWith" Hidden="true" />
+      <Method Name="Match" Hidden="true" />
+      <Method Name="operator !=" Hidden="true" />
+      <Method Name="operator &lt;" Hidden="true" />
+      <Method Name="operator ==" Hidden="true" />
+      <Method Name="operator &gt;" Hidden="true" />
+      <Property Name="Output" Hidden="true" />
+      <Method Name="toString" Hidden="true" />
+      <Property Name="Variables" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAgQAAAAAABQAgACIBgQACAAAAIAEIAQAAgAEBiI=</HashCode>
+      <FileName>DecisionRule.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="attributeType" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="VeurmaClassifier.DecisionRuleSet">
+    <Position X="10.75" Y="7.75" Width="1.75" />
+    <Members>
+      <Method Name="AddCollection" Hidden="true" />
+      <Property Name="Count" Hidden="true" />
+      <Method Name="GetEnumerator" Hidden="true" />
+      <Method Name="IEnumerable.GetEnumerator" Hidden="true" />
+      <Property Name="OutputClassesInSet" Hidden="true" />
+      <Method Name="toString" Hidden="true" />
+      <Method Name="ToString" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAIACQIAAAAAABAGAAEARQQAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>DecisionRuleSet.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="decisionVariableType" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="VeurmaClassifier.DecisionTree">
+    <Position X="5.5" Y="8" Width="1.75" />
+    <Members>
+      <Property Name="Attributes" Hidden="true" />
+      <Method Name="ComputeDecision" Hidden="true" />
+      <Method Name="GetEnumerable" Hidden="true" />
+      <Property Name="Inputs" Hidden="true" />
+      <Property Name="Outputs" Hidden="true" />
+      <Property Name="Root" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAABDAAAAQgAAAQEAgAEBAAAAAgAAQAAAE=</HashCode>
+      <FileName>DecisionTree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeurmaClassifier.Node">
+    <Position X="4.5" Y="1.75" Width="2" />
+    <Members>
+      <Method Name="GetEnumerator" Hidden="true" />
+      <Method Name="Node" Hidden="true" />
+      <Field Name="owner" Hidden="true" />
+      <Property Name="Owner" Hidden="true" />
+      <Field Name="parent" Hidden="true" />
+      <Method Name="ToString" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AMAAAACAAAAAghBEAAAIUAAAAAAAAAAAAQAgAAAAAAA=</HashCode>
+      <FileName>Node.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Branches" />
+      <Property Name="Parent" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="VeurmaClassifier.Query" Collapsed="true">
+    <Position X="8.25" Y="9.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Query.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeurmaClassifier.Range&lt;T&gt;" Collapsed="true">
+    <Position X="8.25" Y="6" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAIABAQAAAAEAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Range.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeurmaClassifier.Form1" Collapsed="true">
+    <Position X="5" Y="6.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>5TSKAi4Sh/CuFh0TwODCUAECKOx7WVCQ3DQfoAVz1gM=</HashCode>
+      <FileName>AI\UninformedSearch\Form1.BidirectionalSearch.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="tree" />
+      <Field Name="c45" />
+      <Field Name="contingencyTable" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="VeurmaClassifier.Attribute">
+    <Position X="12.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAEAAAAAAQQAAAAEAAAAAAAAAAAASA=</HashCode>
+      <FileName>Attribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeurmaClassifier.AttributeCollection">
+    <Position X="8.25" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="VeurmaClassifier.AttributeType">
+    <Position X="10.25" Y="5.75" Width="2.25" />
+    <Members>
+      <Field Name="Both" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAASA=</HashCode>
+      <FileName>Attribute.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

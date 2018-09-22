@@ -1,0 +1,654 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ArffTools</name>
+    </assembly>
+    <members>
+        <member name="T:ArffTools.ArffAttribute">
+            <summary>
+            Represents an attribute in an ARFF file.
+            </summary>
+        </member>
+        <member name="P:ArffTools.ArffAttribute.Name">
+            <summary>
+            Gets the name of the attribute.
+            </summary>
+        </member>
+        <member name="P:ArffTools.ArffAttribute.Type">
+            <summary>
+            Gets the type of the attribute.
+            </summary>
+        </member>
+        <member name="M:ArffTools.ArffAttribute.#ctor(System.String,ArffTools.ArffAttributeType)">
+            <summary>
+            Initializes a new <see cref="T:ArffTools.ArffAttribute"/> instance with the specified name and attribute type.
+            </summary>
+            <param name="name">The name of the attribute to create.</param>
+            <param name="type">The type of the attribute to create.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:ArffTools.ArffAttribute.Equals(System.Object)">
+            <summary>
+            Determines whether this object is equal to another object (an <see cref="T:ArffTools.ArffAttribute"/> with the same name and type).
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ArffTools.ArffAttribute.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns>The hash code for the current object.</returns>
+        </member>
+        <member name="M:ArffTools.ArffAttribute.ToString">
+            <summary>
+            Returns a string representation of this instance.
+            </summary>
+            <returns>The string representation of the current object.</returns>
+        </member>
+        <member name="T:ArffTools.ArffAttributeType">
+            <summary>
+            Abstract base class for all ARFF attribute types.
+            </summary>
+        </member>
+        <member name="F:ArffTools.ArffAttributeType.Numeric">
+            <summary>
+            Numeric attribute type.
+            </summary>
+        </member>
+        <member name="F:ArffTools.ArffAttributeType.String">
+            <summary>
+            String attribute type.
+            </summary>
+        </member>
+        <member name="M:ArffTools.ArffAttributeType.Nominal(System.String[])">
+            <summary>
+            Nominal attribute type with the specified nominal values.
+            </summary>
+            <param name="values">Nominal values of the attribute to create.</param>
+            <returns>An <see cref="T:ArffTools.ArffNominalAttribute"/> instance representing the attribute type.</returns>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:ArffTools.ArffAttributeType.Nominal(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Nominal attribute type with the specified nominal values.
+            </summary>
+            <param name="values">Nominal values of the attribute to create.</param>
+            <returns>An <see cref="T:ArffTools.ArffNominalAttribute"/> instance representing the attribute type.</returns>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:ArffTools.ArffAttributeType.Date">
+            <summary>
+            Date attribute type.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ArffTools.ArffAttributeType.Date(System.String)">
+            <summary>
+            Date attribute type using the specified date format.
+            </summary>
+            <param name="dateFormat">Date format pattern as required by Java class <c>java.text.SimpleDateFormat</c>.</param>
+            <returns>An <see cref="T:ArffTools.ArffDateAttribute"/> instance representing the attribute type.</returns>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:ArffTools.ArffAttributeType.Relational(ArffTools.ArffAttribute[])">
+            <summary>
+            Relational attribute type combining the specified child attributes.
+            </summary>
+            <param name="childAttributes">The child attributes of the relational attribute type.</param>
+            <returns>An <see cref="T:ArffTools.ArffRelationalAttribute"/> instance representing the attribute type.</returns>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="M:ArffTools.ArffAttributeType.Relational(System.Collections.Generic.IList{ArffTools.ArffAttribute})">
+            <summary>
+            Relational attribute type combining the specified child attributes.
+            </summary>
+            <param name="childAttributes">The child attributes of the relational attribute type.</param>
+            <returns>An <see cref="T:ArffTools.ArffRelationalAttribute"/> instance representing the attribute type.</returns>
+            <exception cref="T:System.ArgumentNullException"/>
+        </member>
+        <member name="T:ArffTools.ArffNumericAttribute">
+            <summary>
+            Represents the numeric attribute type.
+            </summary>
+        </member>
+        <member name="M:ArffTools.ArffNumericAttribute.Equals(System.Object)">
+            <summary>
+            Determines whether this object is equal to another object (an <see cref="T:ArffTools.ArffNumericAttribute"/> with the same name).
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ArffTools.ArffNumericAttribute.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns>The hash code for the current object.</returns>
+        </member>
+        <member name="M:ArffTools.ArffNumericAttribute.ToString">
+            <summary>
+            Returns a string representation of this instance.
+            </summary>
+            <returns>The string representation of the current object.</returns>
+        </member>
+        <member name="T:ArffTools.ArffStringAttribute">
+            <summary>
+            Represents the string attribute type.
+            </summary>
+        </member>
+        <member name="M:ArffTools.ArffStringAttribute.Equals(System.Object)">
+            <summary>
+            Determines whether this object is equal to another object (an <see cref="T:ArffTools.ArffStringAttribute"/> with the same name).
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ArffTools.ArffStringAttribute.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns>The hash code for the current object.</returns>
+        </member>
+        <member name="M:ArffTools.ArffStringAttribute.ToString">
+            <summary>
+            Returns a string representation of this instance.
+            </summary>
+            <returns>The string representation of the current object.</returns>
+        </member>
+        <member name="T:ArffTools.ArffNominalAttribute">
+            <summary>
+            Represents the nominal attribute type.
+            </summary>
+        </member>
+        <member name="P:ArffTools.ArffNominalAttribute.Values">
+            <summary>
+            Gets the nominal values of this nominal attribute type.
+            </summary>
+        </member>
+        <member name="M:ArffTools.ArffNominalAttribute.Equals(System.Object)">
+            <summary>
+            Determines whether this object is equal to another object (an <see cref="T:ArffTools.ArffNominalAttribute"/> with the same name and nominal values).
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ArffTools.ArffNominalAttribute.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns>The hash code for the current object.</returns>
+        </member>
+        <member name="M:ArffTools.ArffNominalAttribute.ToString">
+            <summary>
+            Returns a string representation of this instance.
+            </summary>
+            <returns>The string representation of the current object.</returns>
+        </member>
+        <member name="T:ArffTools.ArffDateAttribute">
+            <summary>
+            Represents the date attribute type.
+            </summary>
+        </member>
+        <member name="P:ArffTools.ArffDateAttribute.DateFormat">
+            <summary>
+            Gets the date format that this date attribute type is using.
+            </summary>
+        </member>
+        <member name="M:ArffTools.ArffDateAttribute.Equals(System.Object)">
+            <summary>
+            Determines whether this object is equal to another object (an <see cref="T:ArffTools.ArffDateAttribute"/> with the same name and date format).
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ArffTools.ArffDateAttribute.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns>The hash code for the current object.</returns>
+        </member>
+        <member name="M:ArffTools.ArffDateAttribute.ToString">
+            <summary>
+            Returns a string representation of this instance.
+            </summary>
+            <returns>The string representation of the current object.</returns>
+        </member>
+        <member name="T:ArffTools.ArffRelationalAttribute">
+            <summary>
+            Represents the relational attribute type.
+            </summary>
+        </member>
+        <member name="P:ArffTools.ArffRelationalAttribute.ChildAttributes">
+            <summary>
+            Gets the child attributes of this relational attribute type.
+            </summary>
+        </member>
+        <member name="M:ArffTools.ArffRelationalAttribute.Equals(System.Object)">
+            <summary>
+            Determines whether this object is equal to another object (an <see cref="T:ArffTools.ArffRelationalAttribute"/> with the same name and child attributes).
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ArffTools.ArffRelationalAttribute.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns>The hash code for the current object.</returns>
+        </member>
+        <member name="M:ArffTools.ArffRelationalAttribute.ToString">
+            <summary>
+            Returns a string representation of this instance.
+            </summary>
+            <returns>The string representation of the current object.</returns>
+        </member>
+        <member name="T:ArffTools.ArffHeader">
+            <summary>
+            Represents the header of an ARFF file consisting of relation name and attribute declarations.
+            </summary>
+        </member>
+        <member name="P:ArffTools.ArffHeader.RelationName">
+            <summary>
+            Gets the relation name.
+            </summary>
+        </member>
+        <member name="P:ArffTools.ArffHeader.Attributes">
+            <summary>
+            Gets the declared attributes.
+            </summary>
+        </member>
+        <member name="M:ArffTools.ArffHeader.Equals(System.Object)">
+            <summary>
+            Determines whether this object is equal to another object (an <see cref="T:ArffTools.ArffHeader"/> with the same relation name and attributes).
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ArffTools.ArffHeader.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns>The hash code for the current object.</returns>
+        </member>
+        <member name="M:ArffTools.ArffHeader.ToString">
+            <summary>
+            Returns a string representation of this instance.
+            </summary>
+            <returns>The string representation of the current object.</returns>
+        </member>
+        <member name="T:ArffTools.ArffReader">
+            <summary>
+            Provides methods for reading ARFF (attribute-relation file format) data from a stream or file.
+            </summary>
+        </member>
+        <member name="M:ArffTools.ArffReader.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new <see cref="T:ArffTools.ArffReader"/> instance that reads from the specified stream using UTF-8 encoding.
+            </summary>
+            <param name="stream">The underlying stream that the <see cref="T:ArffTools.ArffReader"/> should read from.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+        </member>
+        <member name="M:ArffTools.ArffReader.#ctor(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Initializes a new <see cref="T:ArffTools.ArffReader"/> instance that reads from the specified stream using the specified encoding.
+            </summary>
+            <param name="stream">The underlying stream that the <see cref="T:ArffTools.ArffReader"/> should read from.</param>
+            <param name="encoding">The character encoding that should be used.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+        </member>
+        <member name="M:ArffTools.ArffReader.#ctor(System.String)">
+            <summary>
+            Initializes a new <see cref="T:ArffTools.ArffReader"/> instance that reads from the specified file path using UTF-8 encoding.
+            </summary>
+            <param name="path">The file path that the <see cref="T:ArffTools.ArffReader"/> should read from.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+        </member>
+        <member name="M:ArffTools.ArffReader.#ctor(System.String,System.Text.Encoding)">
+            <summary>
+            Initializes a new <see cref="T:ArffTools.ArffReader"/> instance that reads from the specified file path using the specified encoding.
+            </summary>
+            <param name="path">The file path that the <see cref="T:ArffTools.ArffReader"/> should read from.</param>
+            <param name="encoding">The character encoding that should be used.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.FileNotFoundException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.NotSupportedException"/>
+        </member>
+        <member name="M:ArffTools.ArffReader.ReadHeader">
+            <summary>
+            Reads relation name and attribute declarations as an <see cref="T:ArffTools.ArffHeader"/> instance.
+            </summary>
+            <returns><see cref="T:ArffTools.ArffHeader"/> instance with read data.</returns>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.IO.InvalidDataException"/>
+        </member>
+        <member name="M:ArffTools.ArffReader.ReadInstance">
+            <summary>
+            Reads data of a single instance. <c>null</c> is returned if the end-of-file is reached.
+            </summary>
+            <returns>The instance data as <see cref="T:System.Object"/>[], or <c>null</c> if the end-of-file was reached.
+            <para>The element types in the returned array depend on the type of their corresponding attribute:
+            <see cref="T:System.Double"/> (numeric attribute),
+            <see cref="T:System.String"/> (string attribute),
+            <see cref="T:System.Int32"/> (nominal attribute, index into nominal values array),
+            <see cref="T:System.DateTime"/> (date attribute),
+            <see cref="T:System.Object"/>[][] (relational attribute).
+            Missing values are represented as <c>null</c>.</para>
+            </returns>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.IO.InvalidDataException"/>
+        </member>
+        <member name="M:ArffTools.ArffReader.ReadInstance(System.Nullable{System.Double}@)">
+            <summary>
+            Reads data of a single instance. <c>null</c> is returned if the end-of-file is reached.
+            </summary>
+            <param name="instanceWeight">Variable that will be set to the instance weight or to <c>null</c>, if no weight is associated with the instance.</param>
+            <returns>The instance data or <c>null</c> if the end-of-file was reached.
+            <para>The element types in the returned array depend on the type of their corresponding attribute:
+            <see cref="T:System.Double"/> (numeric attribute),
+            <see cref="T:System.String"/> (string attribute),
+            <see cref="T:System.Int32"/> (nominal attribute, index into nominal values array),
+            <see cref="T:System.DateTime"/> (date attribute),
+            <see cref="T:System.Object"/>[][] (relational attribute).
+            Missing values are represented as <c>null</c>.</para>
+            </returns>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.IO.InvalidDataException"/>
+        </member>
+        <member name="M:ArffTools.ArffReader.ReadAllInstances">
+            <summary>
+            Reads data of all instances.
+            </summary>
+            <returns>Array with data of all instances.</returns>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.IO.InvalidDataException"/>
+            <seealso cref="M:ArffTools.ArffReader.ReadInstance"/>
+        </member>
+        <member name="M:ArffTools.ArffReader.ReadInstances">
+            <summary>
+            Returns an enumerable that reads data of all instances during enumeration.
+            </summary>
+            <returns>Enumerable with data of all instances.</returns>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.IO.InvalidDataException"/>
+            <seealso cref="M:ArffTools.ArffReader.ReadAllInstances"/>
+        </member>
+        <member name="M:ArffTools.ArffReader.Dispose(System.Boolean)">
+            <summary>
+            Releases all resources used by the <see cref="T:ArffTools.ArffReader"/> object.
+            </summary>
+            <param name="disposing">Whether this method is called from <see cref="M:System.IDisposable.Dispose"/>.</param>
+        </member>
+        <member name="M:ArffTools.ArffReader.Dispose">
+            <summary>
+            Releases all resources used by the <see cref="T:ArffTools.ArffReader"/> object.
+            </summary>
+        </member>
+        <member name="T:ArffTools.ArffWriter">
+            <summary>
+            Provides methods for writing ARFF (attribute-relation file format) data into a stream or file.
+            </summary>
+        </member>
+        <member name="M:ArffTools.ArffWriter.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new <see cref="T:ArffTools.ArffWriter"/> instance that writes to the specified stream using UTF-8 encoding.
+            </summary>
+            <param name="stream">The underlying stream that the <see cref="T:ArffTools.ArffWriter"/> should write to.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.#ctor(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Initializes a new <see cref="T:ArffTools.ArffWriter"/> instance that writes to the specified stream using the specified encoding.
+            </summary>
+            <param name="stream">The underlying stream that the <see cref="T:ArffTools.ArffWriter"/> should write to.</param>
+            <param name="encoding">The character encoding that should be used.</param>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.#ctor(System.String)">
+            <summary>
+            Initializes a new <see cref="T:ArffTools.ArffWriter"/> instance that writes to the specified file path using UTF-8 encoding.
+            </summary>
+            <param name="path">The file path that the <see cref="T:ArffTools.ArffWriter"/> should write to.</param>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.#ctor(System.String,System.Text.Encoding)">
+            <summary>
+            Initializes a new <see cref="T:ArffTools.ArffWriter"/> instance that writes to the specified file path using the specified encoding.
+            </summary>
+            <param name="path">The file path that the <see cref="T:ArffTools.ArffWriter"/> should write to.</param>
+            <param name="encoding">The character encoding that should be used.</param>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.WriteRelationName(System.String)">
+            <summary>
+            Writes the ARFF header (@relation &lt;relation-name&gt;) with the relation name.
+            Must be called before any other data can be written.
+            </summary>
+            <param name="relationName">The name of the relation that is to be written.</param>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.IO.IOException"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.WriteAttribute(ArffTools.ArffAttribute)">
+            <summary>
+            Writes an attribute declaration (@attribute &lt;...&gt;) for the specified <see cref="T:ArffTools.ArffAttribute"/>.
+            Must be called after the relation name has been written and before any data instances are written.
+            </summary>
+            <param name="attribute">An <see cref="T:ArffTools.ArffAttribute"/> object representing the attribute.</param>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.IO.IOException"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.WriteHeader(ArffTools.ArffHeader)">
+            <summary>
+            Writes the relation name and all attribute declarations from the specified <see cref="T:ArffTools.ArffHeader"/>.
+            </summary>
+            <param name="header">The <see cref="T:ArffTools.ArffHeader"/> object containing relation name and attributes to write.</param>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.IO.IOException"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.WriteInstance(System.Object[])">
+            <summary>
+            Writes the data of the specified instance.
+            May be called only after the relation name and all attribute declarations have been written.
+            </summary>
+            <param name="instance">The instance data to write. Length and element types must conform to all previously written attribute declarations.
+            <para>
+            The expected element types depend on the type of their corresponding attribute:
+            <see cref="T:System.Double"/> (numeric attribute),
+            <see cref="T:System.String"/> (string attribute),
+            <see cref="T:System.Int32"/> (nominal attribute, index into nominal values array),
+            <see cref="T:System.DateTime"/> (date attribute),
+            <see cref="T:System.Object"/>[][] (relational attribute).
+            Missing values should be represented as <c>null</c>.</para>
+            </param>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.IO.IOException"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.WriteInstance(System.Object[],System.Boolean)">
+            <summary>
+            Writes the data of the specified instance.
+            May be called only after the relation name and all attribute declarations have been written.
+            </summary>
+            <param name="instance">The instance data to write. Length and element types must conform to all previously written attribute declarations.
+            <para>
+            The expected element types depend on the type of their corresponding attribute:
+            <see cref="T:System.Double"/> (numeric attribute),
+            <see cref="T:System.String"/> (string attribute),
+            <see cref="T:System.Int32"/> (nominal attribute, index into nominal values array),
+            <see cref="T:System.DateTime"/> (date attribute),
+            <see cref="T:System.Object"/>[][] (relational attribute).
+            Missing values should be represented as <c>null</c>.</para>
+            </param>
+            <param name="sparse">True, if the instance should be written in sparse format.</param>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.IO.IOException"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.WriteInstance(System.Object[],System.Boolean,System.Double)">
+            <summary>
+            Writes the data of the specified instance with an associated instance weight.
+            May be called only after the relation name and all attribute declarations have been written.
+            </summary>
+            <param name="instance">The instance data to write. Length and element types must conform to all previously written attribute declarations.
+            <para>The expected element types depend on the type of their corresponding attribute:
+            <see cref="T:System.Double"/> (numeric attribute),
+            <see cref="T:System.String"/> (string attribute),
+            <see cref="T:System.Int32"/> (nominal attribute, index into nominal values array),
+            <see cref="T:System.DateTime"/> (date attribute),
+            <see cref="T:System.Object"/>[][] (relational attribute).
+            Missing values should be represented as <c>null</c>.</para>
+            </param>
+            <param name="sparse">True, if the instance should be written in sparse format.</param>
+            <param name="instanceWeight">The instance weight.</param>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.IO.IOException"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.WriteAllInstances(System.Collections.Generic.IEnumerable{System.Object[]})">
+            <summary>
+            Writes the data of all specified instances.
+            May be called only after the relation name and all attribute declarations have been written.
+            </summary>
+            <param name="instances">Enumerable of instances to write.</param>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <seealso cref="M:ArffTools.ArffWriter.WriteInstance(System.Object[])"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.WriteAllInstances(System.Collections.Generic.IEnumerable{System.Object[]},System.Boolean)">
+            <summary>
+            Writes the data of all specified instances.
+            May be called only after the relation name and all attribute declarations have been written.
+            </summary>
+            <param name="instances">Enumerable of instances to write.</param>
+            <param name="sparse">True, if the instances should be written in sparse format.</param>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.InvalidOperationException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <seealso cref="M:ArffTools.ArffWriter.WriteInstance(System.Object[],System.Boolean)"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.WriteComment(System.String)">
+            <summary>
+            Writes a comment.
+            </summary>
+            <param name="comment">The comment to write.</param>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.IO.IOException"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.Flush">
+            <summary>
+            Flushes any buffered data to the underlying stream or file.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.Text.EncoderFallbackException"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.Write(System.String,System.String,System.Collections.Generic.IEnumerable{ArffTools.ArffAttribute},System.Collections.Generic.IEnumerable{System.Object[]})">
+            <summary>
+            Writes an ARFF file with the specified path, relation name, attributes and instances.
+            </summary>
+            <param name="path">The path of the file that should be written.</param>
+            <param name="relationName">The name of the relation that is to be written.</param>
+            <param name="attributes">The attributes of the data to be written.</param>
+            <param name="instances">The instance data to write. Length and element types must conform to the attributes.
+            <para>
+            The expected element types depend on the type of their corresponding attribute:
+            <see cref="T:System.Double"/> (numeric attribute),
+            <see cref="T:System.String"/> (string attribute),
+            <see cref="T:System.Int32"/> (nominal attribute, index into nominal values array),
+            <see cref="T:System.DateTime"/> (date attribute),
+            <see cref="T:System.Object"/>[][] (relational attribute).
+            Missing values should be represented as <c>null</c>.</para>
+            </param>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.Write(System.String,System.String,System.Collections.Generic.IEnumerable{ArffTools.ArffAttribute},System.Collections.Generic.IEnumerable{System.Object[]},System.Boolean)">
+            <summary>
+            Writes an ARFF file with the specified path, relation name, attributes and instances.
+            </summary>
+            <param name="path">The path of the file that should be written.</param>
+            <param name="relationName">The name of the relation that is to be written.</param>
+            <param name="attributes">The attributes of the data to be written.</param>
+            <param name="instances">The instance data to write. Length and element types must conform to the attributes.
+            <para>
+            The expected element types depend on the type of their corresponding attribute:
+            <see cref="T:System.Double"/> (numeric attribute),
+            <see cref="T:System.String"/> (string attribute),
+            <see cref="T:System.Int32"/> (nominal attribute, index into nominal values array),
+            <see cref="T:System.DateTime"/> (date attribute),
+            <see cref="T:System.Object"/>[][] (relational attribute).
+            Missing values should be represented as <c>null</c>.</para>
+            </param>
+            <param name="sparse">True, if the instances should be written in sparse format.</param>
+            <exception cref="T:System.UnauthorizedAccessException"/>
+            <exception cref="T:System.ArgumentNullException"/>
+            <exception cref="T:System.ArgumentException"/>
+            <exception cref="T:System.IO.DirectoryNotFoundException"/>
+            <exception cref="T:System.IO.IOException"/>
+            <exception cref="T:System.IO.PathTooLongException"/>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:ArffTools.ArffWriter.Dispose(System.Boolean)">
+            <summary>
+            Releases all resources used by the <see cref="T:ArffTools.ArffWriter"/> object.
+            </summary>
+            <param name="disposing">Whether this method is called from <see cref="M:System.IDisposable.Dispose"/>.</param>
+        </member>
+        <member name="M:ArffTools.ArffWriter.Dispose">
+            <summary>
+            Releases all resources used by the <see cref="T:ArffTools.ArffWriter"/> object.
+            </summary>
+        </member>
+    </members>
+</doc>
